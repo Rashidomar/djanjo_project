@@ -1,0 +1,14 @@
+{% extends 'posts_tem/layout.html' %}
+
+{% block title %} LOG IN {% endblock %}
+
+{% block body %}
+{% load static %}
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Login</button>
+    </form>
+
+{% endblock %}

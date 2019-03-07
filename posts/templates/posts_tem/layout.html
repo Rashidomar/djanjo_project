@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'posts/bootstrap/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'posts/bootstrap/css/style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'posts:index' %}">SHOP ONLINE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'posts:index' %}">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+      {% if user.is_authenticated %}
+    <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a>
+            <a class="dropdown-item" href="{% url 'accounts:logout' %}">logout</a>
+        </div>
+      </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'posts:upload' %}">Post Ad</a></li>
+    </ul>
+    {% else %}
+    <ul class="navbar-nav d-none d-lg-flex ml-5">
+        <li class="nav-item"><a class="nav-link" href="{% url 'posts:upload' %}">Post Ad</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sigup</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">login</a></li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+{% block body %}
+{% endblock %}
+<!-- JS -->
+    <script src="{% static 'posts/bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'posts/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

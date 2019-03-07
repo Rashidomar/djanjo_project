@@ -1,0 +1,27 @@
+{% extends 'posts_tem/layout.html' %}
+{% load static %}
+{% block body %}
+{% block title %} Categories {% endblock %}
+    
+      {% for category in categories %}
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading"> <a class="list-group-item" style="font-size:1.5em" href="/{{ category.id }}/">{{ category.name }}</a></h2>
+          <p class="lead">{{ category.description }}</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="{% static 'posts/2.jpg' %}" alt="Generic placeholder image">
+        </div>
+      </div>
+      {% endfor %}
+      <hr class="featurette-divider">
+
+
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+      <hr class="featurette-divider">
+
+    {% endblock %}

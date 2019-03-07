@@ -1,0 +1,26 @@
+{% extends 'posts_tem/layout.html' %}
+{% block body %}
+{% block title %} Add Post {% endblock %}
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form role="form" action="" method="post" enctype="multipart/form-data">  
+        {% csrf_token %}
+        <h3>Add Product <small>It's free and always will be.</small></h3>
+        <hr class="colorgraph">
+        {% for field in form %}
+        <div class="form-group">
+          <span class="text-danger small "{{ field.errors }}></span>
+            <label> {{ field.label_tag }} </label>
+            <div > {{ field }}</div>
+          </div>
+        {% endfor %}        
+        <hr class="colorgraph">
+        <div class="form-group">
+              <button type="submit" class="btn btn-info" style="font-size:1.5em"> <strong>Post Ad</strong></button>
+          </div> 
+      </form>
+    </div>
+  </div>
+</div>
+  {% endblock %}
