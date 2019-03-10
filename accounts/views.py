@@ -40,6 +40,11 @@ def profile(request):
     products = Products.objects.filter(user_post_id=user_id).all()
     return render(request, 'accounts_tem/profile.html', {'products':products})
 
+def dashboard(request):
+    user_id = request.user.id
+    products = Products.objects.filter(user_post_id=user_id).all()
+    return render(request, 'accounts_tem/dashboard.html', {'products':products})
+
 
 
 def logout_view(request):
