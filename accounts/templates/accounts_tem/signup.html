@@ -1,12 +1,25 @@
 {% extends 'posts_tem/layout.html' %}
+{% load crispy_forms_tags %}
 {% block title %} SIGN UP {% endblock %}
 {% block body %}
 {% load static %}
 
-    <form method="post" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-
+<div class="container">
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 text-center">
+		<form role="form" method="post" class="form-signin">
+			<h2 class="card-title mt-3 text-center">Create Account</h2>
+			<h3>Please Sign Up <small>It's free and always will be.</small></h3>
+			<hr class="colorgraph">
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form|crispy }}
+            <div class="form-group">
+        		<button type="submit" class="btn btn-info btn-block" style="font-size:1.5em"> Create Account  </button>
+    		</div>
+    			<p class="text-center">Have an account? <a href="#" style="font-size:1.5em">Log In</a></p>
+            </form>
+    </div>
+</div>
+</div>
 {% endblock %}
